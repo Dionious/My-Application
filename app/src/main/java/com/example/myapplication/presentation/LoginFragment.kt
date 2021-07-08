@@ -16,9 +16,6 @@ class LoginFragment : Fragment() {
     private lateinit var btnLogin: Button
     private lateinit var etLogin: EditText
     private lateinit var etPassword: EditText
-    private var login: String = "admin"
-    private var password: String = "admin"
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,14 +26,9 @@ class LoginFragment : Fragment() {
         etPassword = view.findViewById(R.id.etPassword) as EditText
         btnLogin = view.findViewById(R.id.btnLogin) as Button
         btnLogin.setOnClickListener(View.OnClickListener {
-            if (onClick() as Boolean) {
-                Navigation.findNavController(view).navigate(R.id.navigateToWelcome)
-            }
+            Navigation.findNavController(view).navigate(R.id.navigateToWelcome)
+
         })
         return view
-    }
-
-    private fun onClick(): Any {
-        return (etLogin.text.toString().equals(login) && etLogin.text.toString().equals(password));
     }
 }
