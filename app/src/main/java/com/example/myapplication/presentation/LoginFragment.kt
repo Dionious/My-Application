@@ -27,7 +27,6 @@ class LoginFragment : Fragment() {
         btnLogin = view.findViewById(R.id.btnLogin) as Button
         btnLogin.setOnClickListener(View.OnClickListener {
             Navigation.findNavController(view).navigate(R.id.navigateToWelcome)
-
         })
         return view
     }
