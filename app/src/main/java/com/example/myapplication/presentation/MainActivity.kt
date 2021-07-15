@@ -15,9 +15,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        startKoin {
-            modules(myModule)
-        }
+
     }
 
     override fun onBackPressed() = AlertDialog.Builder(this).apply {

@@ -27,7 +27,7 @@ class LoginFragment : Fragment() {
     private lateinit var btnLogin: Button
     private lateinit var etLogin: EditText
     private lateinit var etPassword: EditText
-
+    private val login:LoginModel by inject()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -52,11 +52,7 @@ class LoginFragment : Fragment() {
         return view
     }
     private suspend fun checkSignIn(etLogin:String,etPassword:String):Boolean {
-        val login:LoginModel by inject()
-        var result:SignInResult
-        coroutineScope {
-            result = login.signIn(etLogin, etPassword)
-        }
+        val result:SignInResult = login.signIn(etLogin, etPassword)
         return result.statusResult
     }
 }
