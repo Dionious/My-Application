@@ -6,14 +6,15 @@ import androidx.navigation.NavController
 import com.example.myapplication.R
 
 class Router {
-    lateinit var navController: NavController
+    private val subscribers = hashSetOf<(screenId: String, args:Bundle) -> Unit>()
     fun navigateTo(screenId: String, args:Bundle=Bundle()){
-        when (screenId) {
-          "welcome" -> navController.navigate(R.id.navigateToWelcome)
-        }
+       subscribers.forEach { it to screenId }
     }
-     fun subscribeToNavigationEvent(onNavigate: (screenId: String, args:Bundle) -> NavController) {
-         navController = onNavigate("welcome", bundleOf(Pair("welcome",R.id.navigateToWelcome)))
+   fun subscribeToNavigationEvent(onNavigate: (screenId: String, args:Bundle) -> Unit) {
+         subscribers.add(onNavigate)
+    }
+    fun unsubscribe(onNavigate: (screenId: String, args:Bundle) -> Unit){
+       subscribers.remove(onNavigate)
     }
 
 }

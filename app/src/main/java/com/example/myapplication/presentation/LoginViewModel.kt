@@ -8,24 +8,28 @@ import com.example.myapplication.domain.models.LoginModel
 import kotlinx.coroutines.launch
 
 class LoginViewModel(private val loginModel: LoginModel, val router: Router): ViewModel() {
-    private val _btnLoginEnable = MutableLiveData(true)
-    private val _etLoginEnable = MutableLiveData(true)
-    private val _etPasswordEnable = MutableLiveData(true)
-    var btnLoginEnable: LiveData<Boolean> = _btnLoginEnable
-    var etLoginEnable: LiveData<Boolean> = _etLoginEnable
-    var etPasswordEnable: LiveData<Boolean>  = _etPasswordEnable
-    suspend fun signIn(login: String, password: String) {
+    private val _EnterEnable = MutableLiveData(true)
+    private val _LoginEnable = MutableLiveData(true)
+    private val _PasswordEnable = MutableLiveData(true)
+    val passwordText = MutableLiveData("")
+    val loginText = MutableLiveData("")
+    val enterEnable: LiveData<Boolean> = _EnterEnable
+    var loginEnable: LiveData<Boolean> = _LoginEnable
+    var passwordEnable: LiveData<Boolean>  = _PasswordEnable
+    private fun signIn() {
     viewModelScope.launch {
-        _btnLoginEnable.value = false
-        _etLoginEnable.value  = false
-        _etPasswordEnable.value  = false
-        if (loginModel.signIn(login,password).statusResult) {
+        _EnterEnable.value = false
+        _LoginEnable.value  = false
+        _PasswordEnable.value  = false
+        if (loginModel.signIn(passwordText.value.toString(), loginText.value.toString()).statusResult) {
             router.navigateTo("welcome")
         }
-        _btnLoginEnable.value = true
-        _etLoginEnable.value  = true
-        _etPasswordEnable.value  = true
-
+        _EnterEnable.value = true
+        _LoginEnable.value  = true
+        _PasswordEnable.value  = true
     }
         }
+    fun onClickPassword() {
+        signIn()
+    }
     }
