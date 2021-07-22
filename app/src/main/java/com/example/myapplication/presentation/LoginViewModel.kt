@@ -1,9 +1,11 @@
 package com.example.myapplication.presentation
 
+import androidx.core.os.bundleOf
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.myapplication.R
 import com.example.myapplication.domain.models.LoginModel
 import kotlinx.coroutines.launch
 
@@ -16,7 +18,7 @@ class LoginViewModel(private val loginModel: LoginModel, val router: Router): Vi
     val enterEnable: LiveData<Boolean> = _EnterEnable
     var loginEnable: LiveData<Boolean> = _LoginEnable
     var passwordEnable: LiveData<Boolean>  = _PasswordEnable
-    private fun signIn() {
+    fun signIn() {
     viewModelScope.launch {
         _EnterEnable.value = false
         _LoginEnable.value  = false
@@ -29,7 +31,4 @@ class LoginViewModel(private val loginModel: LoginModel, val router: Router): Vi
         _PasswordEnable.value  = true
     }
         }
-    fun onClickPassword() {
-        signIn()
-    }
     }

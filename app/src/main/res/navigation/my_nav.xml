@@ -9,18 +9,20 @@
         android:id="@+id/loginFragment"
         android:name="com.example.myapplication.presentation.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
-        <action
-            android:id="@+id/navigateToWelcome"
-            app:destination="@id/welcomeFragment" />
+        tools:layout="@layout/fragment_login">
     </fragment>
+    <action
+        android:id="@+id/navigateToWelcome"
+        app:destination="@id/welcomeFragment"
+        />
     <fragment
         android:id="@+id/welcomeFragment"
         android:name="com.example.myapplication.presentation.WelcomeFragment"
         android:label="fragment_welcome"
-        tools:layout="@layout/fragment_welcome" >
-        <action
-            android:id="@+id/navigateToLogin"
-            app:destination="@id/loginFragment" />
+        tools:layout="@layout/fragment_welcome">
     </fragment>
+    <action
+        android:id="@+id/navigateToLogin"
+        app:destination="@id/loginFragment"
+        />
 </navigation>

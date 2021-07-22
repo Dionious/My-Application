@@ -6,7 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.PopupWindow
 import androidx.navigation.Navigation
+import androidx.navigation.PopUpToBuilder
+import androidx.navigation.fragment.findNavController
 import com.example.myapplication.R
 
 
@@ -20,7 +23,7 @@ class WelcomeFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_welcome, container, false)
         btnExit = view.findViewById(R.id.btnExit) as Button
         btnExit.setOnClickListener(View.OnClickListener {
-            Navigation.findNavController(view).navigate(R.id.navigateToLogin)
+            findNavController().navigate(R.id.navigateToLogin)
         })
         return view
     }
