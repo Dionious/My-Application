@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.example.myapplication.R
@@ -28,12 +27,12 @@ class LoginFragment : Fragment() {
         val binding:FragmentLoginBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false)
         binding.lifecycleOwner = this
         binding.viewmodel = viewModel
-        router.subscribeToNavigationEvent(onNavigate = { dest, bundle -> navController.navigate(R.id.navigateToWelcome, bundleOf(Pair("welcome",R.id.navigateToWelcome))) })
+        router.subscribeToNavigationEvent(onNavigate = { dest, bundle -> navController.navigate(R.id.navigateToWelcomeFromLogin, bundleOf(Pair("welcome",R.id.navigateToWelcomeFromLogin))) })
         return binding.root
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        router.unsubscribe(onNavigate = { dest, bundle -> findNavController().navigate(R.id.navigateToWelcome, bundleOf(Pair("welcome",R.id.navigateToWelcome))) })
+        router.unsubscribe(onNavigate = { dest, bundle -> findNavController().navigate(R.id.navigateToWelcomeFromLogin, bundleOf(Pair("welcome",R.id.navigateToWelcomeFromLogin))) })
     }
 }

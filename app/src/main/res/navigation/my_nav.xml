@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_login">
     </fragment>
     <action
-        android:id="@+id/navigateToWelcome"
+        android:id="@+id/navigateToWelcomeFromLogin"
         app:destination="@id/welcomeFragment"
         />
     <fragment
@@ -22,7 +22,20 @@
         tools:layout="@layout/fragment_welcome">
     </fragment>
     <action
-        android:id="@+id/navigateToLogin"
+        android:id="@+id/navigateToLoginFromWelcome"
         app:destination="@id/loginFragment"
         />
+    <action
+        android:id="@+id/navigateToEmployesFromWelcome"
+        app:destination="@id/employesFragment"
+        />
+    <fragment
+        android:id="@+id/employesFragment"
+        android:name="com.example.myapplication.presentation.EmployesFragment"
+        android:label="fragment_employes"
+        tools:layout="@layout/fragment_employes" >
+    </fragment>
+    <action
+        android:id="@+id/navigateToWelcomeFromEmployes"
+        app:destination="@id/welcomeFragment" />
 </navigation>
