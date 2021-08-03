@@ -1,5 +1,6 @@
 package com.example.myapplication.modules
 
+import com.example.myapplication.adapter.EmployesAdapter
 import com.example.myapplication.data.repository.*
 import com.example.myapplication.domain.models.EmployesModel
 import com.example.myapplication.domain.models.LoginModel
@@ -18,4 +19,5 @@ val myModule = module {
     single { EmployesModel(get()) }
     single { EmployesRepository(get()) as IEmployesRepository }
     single { StubEmployesService() as IEmployesService }
+    single { EmployesAdapter() }
 }
